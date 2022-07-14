@@ -59,3 +59,6 @@ Tipos de services:
 ClusterIP ->
 Node Port -> 
 loadbalancer -> Usado para gerar um IP externo
+
+Conceito de hpa:
+faz o processo de autoscaling de replicaset e de pods. 
