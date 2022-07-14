@@ -62,3 +62,6 @@ loadbalancer -> Usado para gerar um IP externo
 
 Conceito de hpa:
 faz o processo de autoscaling de replicaset e de pods. 
+
+Conceito de ingress:
+é o responsavel por ficar na frente de todos realizando e fazendo os apontamentos como um prox reverso. 
