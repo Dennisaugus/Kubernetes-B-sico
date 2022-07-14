@@ -1,0 +1,61 @@
+Conceitos basicos do Kubernetes:
+
+O Kubernetes é um orquestrador de containers, onde que ele pode-se resolver em alguns casos
+como esses:
+- Variaveis de ambiente
+- Password - secrets
+- Autoscaling
+- Service Discovery
+- Permissionamento de rede
+- API Gateway (validação de autenticação e regras de ingress e egress)
+
+O K8s é um orquestrador de containers, onde que ele roda os containers precisando de um container runtime
+Antigamente o container runtime do Kubernetes era o Docker.
+
+O kubernetes tem uma anterface para rodar um container runtime.
+
+O Rancher consegue gerenciar cluster Kubernetes assim como o EKS (Elast Kubernetes Service) da AWS.
+
+
+Estrutura Básica do Kubernetes:
+
+Para o Kubernetes cuidas dos Containers, ele precisa de um involocro. Dai o kuberentes insere os containers num POD.
+Então, os containers sempre iram rodar dentro de PODs.
+OBS:
+Um POD só pode ter apenas 1 container, pode-se haver casos expecificos que 1 POD pode ter mais de 1 container.
+Mais para memorização, sempre pra 1 POD só pode ter 1 Container.
+
+ReplicaSet -> É o responsavel por monitorar e gerenciar os Pods, onde que se caso um Pod for deletado, o mesmo ira recriar automaticamente.
+kubectl get rs  -> exibe as replicaset em execução 
+
+Kind -> usado para gerenciar o Kubernetes local
+é necessário instalar o kubectl (comando line do kubernetes)
+
+Criando um cluster no Kind: 
+kind create cluster --name=name  -> ira criar um cluster no kind,
+
+Comandos kubectl:
+kubectl cluster-info --context kind-name   -> lista as informações de um cluster criado.
+kubectl get nodes -> exibe quais maquinas estão rodando no kubernetes.
+kubectl apply -f pod.yaml  -> vai rodar um pod.yaml
+kubectl get pods -> exibe os pods em execução
+kubectl port-forward pod/nginx 9090:80 -> faz o processo de redirecionamento de portas onde que a porta 9090 do computador vai redirecionar pra 80 pod.
+kubectl delete pode nginx -> vai matar o pod do nginx 
+
+control-plane é o cara que gerencia as outras maquinas.
+
+É rocomendado que tenho pelo menos 3 máquinas para rodar um cluster kuberenetes 
+
+OBS:
+Ao mudar a versão da imagem, é necessário matar e recriar o POD, o ReplicaSet não faz esse processo.
+O ReplicaSet não é o responsavel por trocar as imagens.
+
+Deployments:
+É o responsavel por administrar e cuidar do ReplicaSet, ele faz a reestruturação do replicaset.
+
+Service :
+é o responsavel por expor seus pods através de um IP interno e um DNS. É dele que faz o processo de loadbalancer.
+Tipos de services:
+ClusterIP ->
+Node Port -> 
+loadbalancer -> Usado para gerar um IP externo

@@ -1,0 +1,17 @@
+#uma api para rodar comandos kuberentes
+apiVersion: v1
+#tipo de recurso que sera criado
+kind: Pod
+#definindo um POD
+metadata:
+  name: nginx
+ #pode-se fazer uma seleção para name de varios PODs
+  labels:
+    name: nginx
+ #é aqui que expecificamos o POD, é aqui que pode-se configurar qual container ira rodar no POD 
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 80
